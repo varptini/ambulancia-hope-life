@@ -89,13 +89,15 @@
     /* ===== HERO ===== */
     #hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, #0f3d8e 100%);
+      background:
+        linear-gradient(135deg, rgba(7,29,74,.88) 0%, rgba(11,45,110,.80) 50%, rgba(15,61,142,.75) 100%),
+        url('IMG-20260522-WA0039.jpg') center/cover no-repeat;
       display: flex; align-items: center; position: relative; overflow: hidden; padding: 6rem 0 4rem;
     }
     #hero::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 80% 20%, rgba(30,158,69,.15) 0%, transparent 50%),
-                  radial-gradient(circle at 20% 80%, rgba(220,38,38,.10) 0%, transparent 40%);
+      background: radial-gradient(circle at 80% 20%, rgba(30,158,69,.12) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(220,38,38,.08) 0%, transparent 40%);
     }
     #hero::after {
       content: ''; position: absolute; top: -80px; right: -80px;
@@ -391,6 +393,63 @@
     }
 
     .pac-container { z-index: 10001 !important; }
+
+    /* ===== LOGO REAL ===== */
+    .logo-img {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: #fff; padding: 3px; object-fit: contain; flex-shrink: 0;
+    }
+    .footer-logo-img {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(255,255,255,.9); padding: 3px; object-fit: contain; flex-shrink: 0;
+    }
+
+    /* ===== GALERÍA ===== */
+    #galeria { background: var(--gray-900); padding: 5rem 0; }
+    #galeria .section-title    { color: #fff; }
+    #galeria .section-subtitle { color: rgba(255,255,255,.6); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden; border-radius: var(--radius);
+      cursor: pointer; aspect-ratio: 9/16;
+    }
+    .gallery-item:first-child { aspect-ratio: 9/16; }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top;
+      transition: transform .4s ease;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item::after {
+      content: '🔍';
+      position: absolute; inset: 0;
+      background: rgba(11,45,110,.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; opacity: 0; transition: opacity .3s;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.92); align-items: center; justify-content: center; padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img  { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: var(--radius); }
+    .lightbox-close {
+      position: fixed; top: 1rem; right: 1.25rem;
+      font-size: 2.5rem; color: #fff; cursor: pointer; line-height: 1;
+      background: none; border: none; z-index: 10000;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid { grid-template-columns: 1fr; gap: .75rem; }
+      .gallery-item { aspect-ratio: 4/3; }
+    }
   </style>
 </head>
 <body>
@@ -399,18 +458,13 @@
 <nav id="navbar">
   <div class="navbar-inner">
     <a href="#hero" class="nav-logo">
-      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="8" fill="rgba(255,255,255,.12)"/>
-        <rect x="14" y="4"  width="12" height="32" rx="3" fill="rgba(255,255,255,.9)"/>
-        <rect x="4"  y="14" width="32" height="12" rx="3" fill="rgba(255,255,255,.9)"/>
-        <rect x="15" y="5"  width="10" height="30" rx="2" fill="#DC2626"/>
-        <rect x="5"  y="15" width="30" height="10" rx="2" fill="#DC2626"/>
-      </svg>
+      <img src="IMG-20260522-WA0036.jpg" class="logo-img" alt="Hope Life logo" />
       <div class="nav-brand">Ambulancia Hope Life<span>Cruz Grande, Guerrero</span></div>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#cobertura">Cobertura</a></li>
+      <li><a href="#galeria">Galería</a></li>
       <li><a href="#cotizador">Cotizar</a></li>
       <li><a href="#contacto">Contacto</a></li>
       <li><a href="#cotizador" class="btn btn-primary nav-cta">Cotizar traslado</a></li>
@@ -461,6 +515,32 @@
     <div class="routes-grid" id="routesGrid"></div>
   </div>
 </section>
+
+<!-- ============================================================ GALERÍA -->
+<section id="galeria">
+  <div class="container">
+    <h2 class="section-title">Nuestra Unidad</h2>
+    <p class="section-subtitle">Equipamiento profesional y personal capacitado para cada traslado</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox('IMG-20260522-WA0037.jpg')">
+        <img src="IMG-20260522-WA0037.jpg" alt="Ambulancia Hope Life y equipo" loading="lazy" />
+      </div>
+      <div class="gallery-item" onclick="openLightbox('IMG-20260522-WA0038.jpg')">
+        <img src="IMG-20260522-WA0038.jpg" alt="Servicios Hope Life" loading="lazy" />
+      </div>
+      <div class="gallery-item" onclick="openLightbox('IMG-20260522-WA0040.jpg')">
+        <img src="IMG-20260522-WA0040.jpg" alt="Ambulancia Hope Life E-001 en base" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightboxImg" src="" alt="Imagen ampliada" onclick="event.stopPropagation()" />
+</div>
 
 <!-- ============================================================ COTIZADOR -->
 <section id="cotizador">
@@ -608,13 +688,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="8" fill="rgba(255,255,255,.08)"/>
-        <rect x="14" y="4"  width="12" height="32" rx="3" fill="rgba(255,255,255,.3)"/>
-        <rect x="4"  y="14" width="32" height="12" rx="3" fill="rgba(255,255,255,.3)"/>
-        <rect x="15" y="5"  width="10" height="30" rx="2" fill="#DC2626"/>
-        <rect x="5"  y="15" width="30" height="10" rx="2" fill="#DC2626"/>
-      </svg>
+      <img src="IMG-20260522-WA0036.jpg" class="footer-logo-img" alt="Hope Life logo" />
       <div class="brand-text">Ambulancia Hope Life<span>Servicio 24/7 · 365 días al año</span></div>
     </div>
     <div class="footer-info" id="footerInfo"></div>
@@ -1147,6 +1221,23 @@ function copiarCotizacion() {
 function fmt(n) {
   return new Intl.NumberFormat('es-MX', { style:'currency', currency:'MXN', minimumFractionDigits:0 }).format(n);
 }
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
 function initHamburger() {
   const btn   = document.getElementById('hamburgerBtn');
