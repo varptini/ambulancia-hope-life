@@ -19,6 +19,8 @@
       --green-light: #1E9E45;
       --green-pale:  #F0FFF4;
       --red:         #DC2626;
+      --amber:       #D97706;
+      --amber-pale:  #FFFBEB;
       --white:       #FFFFFF;
       --gray-50:     #F9FAFB;
       --gray-100:    #F3F4F6;
@@ -38,13 +40,9 @@
     html  { scroll-behavior: smooth; }
     body  { font-family: 'Inter', sans-serif; color: var(--gray-900); background: var(--white); line-height: 1.6; }
 
-    /* ===== TIPOGRAFÍA ===== */
     h1, h2, h3 { font-family: 'Montserrat', sans-serif; line-height: 1.2; }
-
     .section-title    { font-size: clamp(1.75rem, 4vw, 2.5rem); color: var(--navy); text-align: center; margin-bottom: .5rem; }
     .section-subtitle { text-align: center; color: var(--gray-600); font-size: 1.05rem; margin-bottom: 3rem; }
-
-    /* ===== CONTENEDOR ===== */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
     section    { padding: 5rem 0; }
 
@@ -56,14 +54,14 @@
       text-decoration: none; border: none; cursor: pointer;
       transition: all .2s ease; white-space: nowrap; font-family: 'Inter', sans-serif;
     }
-    .btn-primary     { background: var(--red);         color: #fff; box-shadow: 0 4px 15px rgba(220,38,38,.4); }
-    .btn-primary:hover { background: #b91c1c; transform: translateY(-2px); }
-    .btn-secondary   { background: transparent; color: #fff; border: 2px solid #fff; }
+    .btn-primary      { background: var(--red);         color: #fff; box-shadow: 0 4px 15px rgba(220,38,38,.4); }
+    .btn-primary:hover  { background: #b91c1c; transform: translateY(-2px); }
+    .btn-secondary    { background: transparent; color: #fff; border: 2px solid #fff; }
     .btn-secondary:hover { background: rgba(255,255,255,.15); }
-    .btn-green       { background: var(--green-light); color: #fff; box-shadow: 0 4px 15px rgba(30,158,69,.4); }
-    .btn-green:hover { background: var(--green); transform: translateY(-2px); }
-    .btn-navy        { background: var(--navy); color: #fff; }
-    .btn-navy:hover  { background: var(--navy-dark); transform: translateY(-2px); }
+    .btn-green        { background: var(--green-light); color: #fff; box-shadow: 0 4px 15px rgba(30,158,69,.4); }
+    .btn-green:hover  { background: var(--green); transform: translateY(-2px); }
+    .btn-navy         { background: var(--navy); color: #fff; }
+    .btn-navy:hover   { background: var(--navy-dark); transform: translateY(-2px); }
     .btn-outline-navy { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
     .btn-outline-navy:hover { background: var(--navy); color: #fff; }
 
@@ -71,49 +69,42 @@
     #navbar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       background: rgba(11,45,110,.97); backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 2px 20px rgba(0,0,0,.25);
+      -webkit-backdrop-filter: blur(12px); box-shadow: 0 2px 20px rgba(0,0,0,.25);
     }
     .navbar-inner {
       display: flex; align-items: center; justify-content: space-between;
       padding: .875rem 1.5rem; max-width: 1200px; margin: 0 auto;
     }
-    .nav-logo   { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-    .logo-icon  { width: 40px; height: 40px; flex-shrink: 0; }
-    .nav-brand  { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; color: #fff; line-height: 1.2; }
+    .nav-logo  { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .logo-icon { width: 40px; height: 40px; flex-shrink: 0; }
+    .nav-brand { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.1rem; color: #fff; line-height: 1.2; }
     .nav-brand span { display: block; font-size: .7rem; font-weight: 500; color: rgba(255,255,255,.7); letter-spacing: .05em; }
-    .nav-links  { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
+    .nav-links { display: flex; align-items: center; gap: 1.75rem; list-style: none; }
     .nav-links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: #fff; }
-    .nav-cta    { font-size: .875rem !important; padding: .6rem 1.25rem !important; }
-    .hamburger  { display: none; background: none; border: none; cursor: pointer; padding: .25rem; }
+    .nav-cta   { font-size: .875rem !important; padding: .6rem 1.25rem !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: .25rem; }
     .hamburger span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; transition: all .3s; }
 
     /* ===== HERO ===== */
     #hero {
       min-height: 100vh;
       background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 55%, #0f3d8e 100%);
-      display: flex; align-items: center;
-      position: relative; overflow: hidden;
-      padding: 6rem 0 4rem;
+      display: flex; align-items: center; position: relative; overflow: hidden; padding: 6rem 0 4rem;
     }
     #hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background:
-        radial-gradient(circle at 80% 20%, rgba(30,158,69,.15) 0%, transparent 50%),
-        radial-gradient(circle at 20% 80%, rgba(220,38,38,.10) 0%, transparent 40%);
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(30,158,69,.15) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(220,38,38,.10) 0%, transparent 40%);
     }
     #hero::after {
-      content: '';
-      position: absolute; top: -80px; right: -80px;
+      content: ''; position: absolute; top: -80px; right: -80px;
       width: 420px; height: 420px; opacity: .04;
-      background:
-        linear-gradient(#fff 0 0) 50% 50% / 90px 100%,
-        linear-gradient(#fff 0 0) 50% 50% / 100% 90px;
+      background: linear-gradient(#fff 0 0) 50% 50% / 90px 100%,
+                  linear-gradient(#fff 0 0) 50% 50% / 100% 90px;
       background-repeat: no-repeat;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-content  { position: relative; z-index: 1; max-width: 680px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: .5rem;
       background: rgba(220,38,38,.2); border: 1px solid rgba(220,38,38,.4);
@@ -121,26 +112,22 @@
       font-size: .82rem; font-weight: 600; letter-spacing: .05em;
       text-transform: uppercase; margin-bottom: 1.5rem;
     }
-    .hero-badge::before {
-      content: ''; width: 8px; height: 8px; border-radius: 50%;
-      background: #f87171; animation: blink 2s infinite;
-    }
+    .hero-badge::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #f87171; animation: blink 2s infinite; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-    .hero-title  { font-size: clamp(2.4rem, 6vw, 3.8rem); color: #fff; margin-bottom: 1.5rem; }
+    .hero-title    { font-size: clamp(2.4rem, 6vw, 3.8rem); color: #fff; margin-bottom: 1.5rem; }
     .hero-title .accent { color: #4ade80; }
     .hero-subtitle { font-size: clamp(1rem, 2.5vw, 1.25rem); color: rgba(255,255,255,.8); margin-bottom: 2.5rem; max-width: 540px; }
-    .hero-buttons { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
-    .hero-stats  { display: flex; gap: 2.5rem; flex-wrap: wrap; }
-    .stat-number { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: #4ade80; line-height: 1; }
-    .stat-label  { font-size: .82rem; color: rgba(255,255,255,.65); margin-top: .25rem; }
+    .hero-buttons  { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem; }
+    .hero-stats    { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .stat-number   { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: #4ade80; line-height: 1; }
+    .stat-label    { font-size: .82rem; color: rgba(255,255,255,.65); margin-top: .25rem; }
 
     /* ===== SERVICIOS ===== */
     #servicios { background: var(--gray-50); }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; }
     .service-card {
-      background: #fff; border-radius: var(--radius);
-      padding: 2rem; box-shadow: var(--shadow-sm);
-      border: 1px solid var(--gray-100);
+      background: #fff; border-radius: var(--radius); padding: 2rem;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100);
       transition: all .3s; position: relative; overflow: hidden;
     }
     .service-card::before {
@@ -151,18 +138,14 @@
     .service-icon {
       width: 56px; height: 56px;
       background: linear-gradient(135deg, var(--navy), var(--navy-light));
-      border-radius: var(--radius-sm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1.25rem;
+      border-radius: var(--radius-sm); display: flex; align-items: center;
+      justify-content: center; font-size: 1.5rem; margin-bottom: 1.25rem;
     }
     .service-card h3 { font-size: 1.15rem; color: var(--navy); margin-bottom: .6rem; }
     .service-card p  { color: var(--gray-600); font-size: .93rem; line-height: 1.7; }
 
     /* ===== COBERTURA ===== */
-    #cobertura {
-      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
-      color: #fff;
-    }
+    #cobertura { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); color: #fff; }
     #cobertura .section-title    { color: #fff; }
     #cobertura .section-subtitle { color: rgba(255,255,255,.7); }
     .routes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; }
@@ -171,9 +154,9 @@
       border-radius: var(--radius); padding: 1.5rem; transition: all .3s;
     }
     .route-card:hover { background: rgba(255,255,255,.13); transform: translateY(-3px); }
-    .route-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .6rem; }
-    .route-dot    { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
-    .route-name   { font-weight: 700; font-size: 1rem; }
+    .route-header  { display: flex; align-items: center; gap: .75rem; margin-bottom: .6rem; }
+    .route-dot     { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+    .route-name    { font-weight: 700; font-size: 1rem; }
     .route-details { color: rgba(255,255,255,.65); font-size: .85rem; }
     .route-distance {
       margin-top: .5rem; display: inline-block;
@@ -184,16 +167,38 @@
     /* ===== COTIZADOR ===== */
     #cotizador { background: #fff; }
     .quoter-wrapper {
-      max-width: 800px; margin: 0 auto;
+      max-width: 820px; margin: 0 auto;
       background: var(--gray-50); border-radius: 20px;
-      padding: 2.5rem; box-shadow: var(--shadow-lg);
-      border: 1px solid var(--gray-200);
+      padding: 2.5rem; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-200);
     }
-    .quoter-config {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-      margin-bottom: 1.5rem; padding: 1.25rem;
-      background: #fff; border-radius: var(--radius-sm); border: 1px solid var(--gray-200);
+
+    /* Selector de tipo de traslado */
+    .transfer-type-label {
+      font-size: .82rem; font-weight: 600; color: var(--gray-700);
+      text-transform: uppercase; letter-spacing: .04em; margin-bottom: .75rem; display: block;
     }
+    .transfer-types {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.5rem;
+    }
+    .type-card {
+      position: relative; cursor: pointer;
+    }
+    .type-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .type-card-inner {
+      border: 2px solid var(--gray-200); border-radius: var(--radius-sm);
+      padding: 1rem .875rem; background: #fff; transition: all .2s; text-align: center;
+    }
+    .type-card input:checked + .type-card-inner {
+      border-color: var(--navy-light); background: rgba(26,86,219,.05);
+      box-shadow: 0 0 0 3px rgba(26,86,219,.12);
+    }
+    .type-card-inner:hover { border-color: var(--navy-light); }
+    .type-icon  { font-size: 1.5rem; display: block; margin-bottom: .35rem; }
+    .type-name  { font-weight: 700; font-size: .88rem; color: var(--navy); display: block; line-height: 1.3; }
+    .type-rate  { font-size: .8rem; color: var(--green-light); font-weight: 700; margin: .2rem 0; display: block; }
+    .type-desc  { font-size: .75rem; color: var(--gray-400); display: block; line-height: 1.4; }
+
+    /* Formulario */
     .form-group { display: flex; flex-direction: column; gap: .4rem; }
     .form-group label {
       font-size: .82rem; font-weight: 600; color: var(--gray-700);
@@ -207,11 +212,11 @@
       background: #fff; transition: border-color .2s; width: 100%;
     }
     .form-group input:focus, .form-group select:focus {
-      outline: none; border-color: var(--navy-light);
-      box-shadow: 0 0 0 3px rgba(26,86,219,.1);
+      outline: none; border-color: var(--navy-light); box-shadow: 0 0 0 3px rgba(26,86,219,.1);
     }
     .form-group input.error { border-color: var(--red); }
-    .form-row   { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-row     { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-row-2   { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
 
     /* Hospitales rápidos */
     .quick-hospitals { margin-bottom: 1.5rem; }
@@ -226,9 +231,7 @@
       font-size: .82rem; font-weight: 500; cursor: pointer;
       transition: all .2s; font-family: 'Inter', sans-serif;
     }
-    .hospital-btn:hover, .hospital-btn.active {
-      border-color: var(--navy-light); background: var(--navy-light); color: #fff;
-    }
+    .hospital-btn:hover, .hospital-btn.active { border-color: var(--navy-light); background: var(--navy-light); color: #fff; }
 
     /* Viaje redondo */
     .round-trip-toggle {
@@ -244,13 +247,17 @@
     /* Botón calcular */
     .calculate-btn { width: 100%; justify-content: center; font-size: 1.05rem; padding: 1rem; margin-bottom: 1.5rem; }
 
-    /* Aviso modo manual */
-    .manual-mode-notice {
-      display: none; background: rgba(26,86,219,.06);
-      border: 1px solid rgba(26,86,219,.2); border-radius: var(--radius-sm);
-      padding: .75rem 1rem; font-size: .85rem; color: var(--navy); margin-bottom: 1rem;
+    /* Avisos */
+    .notice {
+      display: none; border-radius: var(--radius-sm);
+      padding: .75rem 1rem; font-size: .85rem; margin-bottom: 1rem;
+      display: flex; gap: .5rem; align-items: flex-start;
     }
-    .manual-mode-notice.visible { display: block; }
+    .notice-blue  { background: rgba(26,86,219,.06); border: 1px solid rgba(26,86,219,.2); color: var(--navy); }
+    .notice-amber { background: var(--amber-pale); border: 1px solid #FCD34D; color: #92400E; }
+    .notice.hidden { display: none !important; }
+
+    /* Campos km manuales */
     .manual-km-fields { display: none; gap: 1rem; margin-bottom: 1.5rem; }
     .manual-km-fields.visible { display: grid; grid-template-columns: 1fr 1fr; }
 
@@ -264,30 +271,23 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Resultado */
+    /* ===== RESULTADO ===== */
     #cotizacion-resultado { display: none; background: #fff; border-radius: var(--radius); padding: 1.75rem; border: 2px solid var(--gray-200); }
     #cotizacion-resultado.visible { display: block; }
     .resultado-header {
       display: flex; align-items: center; gap: .75rem;
-      margin-bottom: 1.5rem; padding-bottom: 1rem;
-      border-bottom: 2px solid var(--gray-100);
+      margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 2px solid var(--gray-100);
     }
-    .resultado-icon {
-      width: 40px; height: 40px; background: var(--green-pale);
-      border-radius: 50%; display: flex; align-items: center;
-      justify-content: center; font-size: 1.25rem;
-    }
+    .resultado-icon { width: 40px; height: 40px; background: var(--green-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
     .resultado-title { font-size: 1.1rem; font-weight: 700; color: var(--navy); }
-    .tramos-list     { list-style: none; margin-bottom: 1.25rem; }
-    .tramo-item {
-      display: flex; align-items: flex-start; gap: .75rem;
-      padding: .875rem 0; border-bottom: 1px dashed var(--gray-200);
-    }
+    .tramos-list { list-style: none; margin-bottom: 1.25rem; }
+    .tramo-item { display: flex; align-items: flex-start; gap: .75rem; padding: .875rem 0; border-bottom: 1px dashed var(--gray-200); }
     .tramo-item:last-child { border-bottom: none; }
-    .tramo-dot   { width: 10px; height: 10px; border-radius: 50%; background: var(--navy-light); flex-shrink: 0; margin-top: 5px; }
-    .tramo-info  { flex: 1; }
+    .tramo-dot  { width: 10px; height: 10px; border-radius: 50%; background: var(--navy-light); flex-shrink: 0; margin-top: 5px; }
+    .tramo-info { flex: 1; }
     .tramo-label { font-size: .78rem; color: var(--gray-400); font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
     .tramo-route { font-size: .93rem; color: var(--gray-700); font-weight: 500; margin: .15rem 0; }
+    .tramo-sub   { font-size: .78rem; color: var(--gray-400); }
     .tramo-cost  { text-align: right; flex-shrink: 0; }
     .tramo-km    { font-size: .78rem; color: var(--gray-400); }
     .tramo-price { font-size: 1rem; font-weight: 700; color: var(--navy); }
@@ -296,12 +296,12 @@
       border-radius: var(--radius-sm); padding: 1.25rem 1.5rem;
       display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;
     }
-    .total-box .t-label     { color: rgba(255,255,255,.8); font-size: .88rem; }
-    .total-box .round-note  { color: rgba(255,255,255,.55); font-size: .75rem; margin-top: .2rem; display: none; }
-    .total-box .amount      { font-family: 'Montserrat', sans-serif; font-size: 1.85rem; font-weight: 800; color: #4ade80; }
+    .total-box .t-label    { color: rgba(255,255,255,.8); font-size: .88rem; }
+    .total-box .round-note { color: rgba(255,255,255,.55); font-size: .75rem; margin-top: .2rem; display: none; }
+    .total-box .amount     { font-family: 'Montserrat', sans-serif; font-size: 1.85rem; font-weight: 800; color: #4ade80; }
     .disclaimer {
       margin-top: 1rem; padding: .75rem 1rem;
-      background: #FFFBEB; border: 1px solid #FCD34D;
+      background: var(--amber-pale); border: 1px solid #FCD34D;
       border-radius: var(--radius-sm); font-size: .82rem; color: #92400E;
       display: flex; gap: .5rem; align-items: flex-start;
     }
@@ -312,13 +312,11 @@
     #contacto { background: var(--gray-50); }
     .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
     .contact-card {
-      background: #fff; border-radius: var(--radius);
-      padding: 2rem; text-align: center;
-      box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100);
-      transition: all .3s;
+      background: #fff; border-radius: var(--radius); padding: 2rem; text-align: center;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); transition: all .3s;
     }
     .contact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-    .contact-icon   { font-size: 2.5rem; margin-bottom: 1rem; }
+    .contact-icon    { font-size: 2.5rem; margin-bottom: 1rem; }
     .contact-card h3 { font-size: 1.1rem; color: var(--navy); margin-bottom: .5rem; }
     .contact-card p  { color: var(--gray-600); font-size: .88rem; margin-bottom: 1.25rem; line-height: 1.6; }
     .phone-link {
@@ -343,7 +341,7 @@
     .footer-brand { display: flex; align-items: center; gap: .75rem; }
     .brand-text   { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.05rem; }
     .brand-text span { display: block; font-size: .75rem; font-weight: 400; color: rgba(255,255,255,.55); }
-    .footer-info { text-align: right; color: rgba(255,255,255,.55); font-size: .83rem; line-height: 1.8; }
+    .footer-info  { text-align: right; color: rgba(255,255,255,.55); font-size: .83rem; line-height: 1.8; }
 
     /* ===== WHATSAPP FLOTANTE ===== */
     .floating-wa {
@@ -366,7 +364,8 @@
         border-top: 1px solid rgba(255,255,255,.1);
       }
       .hero-buttons { flex-direction: column; align-items: flex-start; }
-      .quoter-config { grid-template-columns: 1fr; }
+      .transfer-types { grid-template-columns: 1fr; }
+      .form-row-2 { grid-template-columns: 1fr; }
       .manual-km-fields.visible { grid-template-columns: 1fr; }
       .resultado-actions { flex-direction: column; }
       .resultado-actions .btn { width: 100%; }
@@ -381,8 +380,8 @@
     /* ===== IMPRESIÓN ===== */
     @media print {
       #navbar, .floating-wa, .hero-buttons, .hospital-buttons,
-      .round-trip-toggle, #btnCalcular, .resultado-actions,
-      #servicios, #cobertura, #contacto, footer { display: none !important; }
+      .transfer-types, .round-trip-toggle, #btnCalcular,
+      .resultado-actions, #servicios, #cobertura, #contacto, footer { display: none !important; }
       #hero { min-height: auto; padding: 1rem; background: #fff !important; }
       .hero-title, .hero-subtitle, .hero-badge { color: #000 !important; }
       #cotizacion-resultado { display: block !important; border: 1px solid #ccc; }
@@ -391,31 +390,24 @@
       .total-box .amount, .total-box .t-label { color: #000 !important; }
     }
 
-    /* Autocomplete dropdown */
     .pac-container { z-index: 10001 !important; }
   </style>
 </head>
 <body>
 
-<!-- ============================================================
-     NAVBAR
-     ============================================================ -->
+<!-- ============================================================ NAVBAR -->
 <nav id="navbar">
   <div class="navbar-inner">
     <a href="#hero" class="nav-logo">
-      <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="logo-icon" viewBox="0 0 40 40" fill="none">
         <rect width="40" height="40" rx="8" fill="rgba(255,255,255,.12)"/>
         <rect x="14" y="4"  width="12" height="32" rx="3" fill="rgba(255,255,255,.9)"/>
         <rect x="4"  y="14" width="32" height="12" rx="3" fill="rgba(255,255,255,.9)"/>
         <rect x="15" y="5"  width="10" height="30" rx="2" fill="#DC2626"/>
         <rect x="5"  y="15" width="30" height="10" rx="2" fill="#DC2626"/>
       </svg>
-      <div class="nav-brand">
-        Ambulancia Hope Life
-        <span>Cruz Grande, Guerrero</span>
-      </div>
+      <div class="nav-brand">Ambulancia Hope Life<span>Cruz Grande, Guerrero</span></div>
     </a>
-
     <ul class="nav-links" id="navLinks">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#cobertura">Cobertura</a></li>
@@ -423,57 +415,36 @@
       <li><a href="#contacto">Contacto</a></li>
       <li><a href="#cotizador" class="btn btn-primary nav-cta">Cotizar traslado</a></li>
     </ul>
-
     <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 
-<!-- ============================================================
-     HERO
-     ============================================================ -->
+<!-- ============================================================ HERO -->
 <section id="hero">
   <div class="container">
     <div class="hero-content">
       <div class="hero-badge">🚨 Servicio 24/7 · 365 días al año</div>
-
-      <h1 class="hero-title">
-        Tu traslado seguro,<br>
-        <span class="accent">siempre disponible</span>
-      </h1>
-
+      <h1 class="hero-title">Tu traslado seguro,<br><span class="accent">siempre disponible</span></h1>
       <p class="hero-subtitle">
         Traslados locales y foráneos, atención en ruta y cobertura de eventos especiales
         desde Cruz Grande, Guerrero. Personal capacitado y equipo médico especializado.
       </p>
-
       <div class="hero-buttons">
         <a href="#cotizador" class="btn btn-primary">🧮 Cotizar traslado</a>
         <a href="#contacto"  class="btn btn-secondary">📞 Contactar ahora</a>
       </div>
-
       <div class="hero-stats">
-        <div class="stat-item">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Disponibilidad</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">365</div>
-          <div class="stat-label">Días al año</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">Local</div>
-          <div class="stat-label">&amp; Foráneo</div>
-        </div>
+        <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Disponibilidad</div></div>
+        <div class="stat-item"><div class="stat-number">365</div><div class="stat-label">Días al año</div></div>
+        <div class="stat-item"><div class="stat-number">Local</div><div class="stat-label">&amp; Foráneo</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     SERVICIOS
-     ============================================================ -->
+<!-- ============================================================ SERVICIOS -->
 <section id="servicios">
   <div class="container">
     <h2 class="section-title">Nuestros Servicios</h2>
@@ -482,9 +453,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     COBERTURA
-     ============================================================ -->
+<!-- ============================================================ COBERTURA -->
 <section id="cobertura">
   <div class="container">
     <h2 class="section-title">Rutas y Cobertura</h2>
@@ -493,53 +462,36 @@
   </div>
 </section>
 
-<!-- ============================================================
-     COTIZADOR
-     ============================================================ -->
+<!-- ============================================================ COTIZADOR -->
 <section id="cotizador">
   <div class="container">
     <h2 class="section-title">Cotizador de Traslado</h2>
-    <p class="section-subtitle">Obtén un presupuesto estimado al instante — sin compromiso</p>
+    <p class="section-subtitle">Presupuesto estimado al instante — sin compromiso</p>
 
     <div class="quoter-wrapper">
 
-      <!-- Tarifa configurable -->
-      <div class="quoter-config">
-        <div class="form-group">
-          <label>💰 Costo por km (MXN)</label>
-          <input type="number" id="costPerKm" min="1" step="1" />
-        </div>
-        <div class="form-group">
-          <label>🏁 Cargo base (MXN)</label>
-          <input type="number" id="baseCharge" min="0" step="50" placeholder="0" />
-        </div>
+      <!-- 1. Tipo de traslado -->
+      <span class="transfer-type-label">🚑 Tipo de traslado</span>
+      <div class="transfer-types" id="transferTypes"></div>
+
+      <!-- Aviso modo manual -->
+      <div class="notice notice-blue hidden" id="manualModeNotice">
+        ℹ️ <span><strong>Modo manual:</strong> No hay clave de Google Maps. Ingresa los kilómetros en los campos de abajo.</span>
       </div>
 
-      <!-- Aviso modo manual (sin API Key) -->
-      <div class="manual-mode-notice" id="manualModeNotice">
-        ℹ️ <strong>Modo manual:</strong> No hay clave de Google Maps configurada.
-        Ingresa los kilómetros directamente en los campos de abajo.
-      </div>
-
-      <!-- Punto de salida -->
+      <!-- 2. Rutas -->
       <div class="form-row">
         <div class="form-group">
           <label>📍 Punto de salida de la ambulancia</label>
           <input type="text" id="inputSalida" placeholder="Cruz Grande, Florencio Villarreal (por defecto)" />
         </div>
       </div>
-
-      <!-- Punto de recogida (opcional) -->
       <div class="form-row">
         <div class="form-group">
-          <label>🏠 Punto de recogida del paciente
-            <em style="font-weight:400;font-size:.78rem;color:var(--gray-400)">(opcional)</em>
-          </label>
+          <label>🏠 Punto de recogida del paciente <em style="font-weight:400;font-size:.78rem;color:var(--gray-400)">(opcional — si no sale de la base)</em></label>
           <input type="text" id="inputRecogida" placeholder="Domicilio del paciente — dejar vacío si no aplica" />
         </div>
       </div>
-
-      <!-- Destino final -->
       <div class="form-row" style="margin-bottom:1.5rem">
         <div class="form-group">
           <label>🏥 Hospital o destino final <span style="color:var(--red)">*</span></label>
@@ -553,25 +505,49 @@
         <div class="hospital-buttons" id="hospitalButtons"></div>
       </div>
 
-      <!-- Viaje redondo -->
-      <label class="round-trip-toggle">
-        <input type="checkbox" id="roundTrip" />
-        <span>🔄 Viaje redondo (incluir regreso — multiplica km × 2)</span>
-      </label>
+      <!-- Aviso viaje fuera del estado -->
+      <div class="notice notice-amber hidden" id="outStateNotice">
+        ⚠️ <span><strong>Viaje fuera del estado:</strong> Esta cotización es preliminar. El precio final queda sujeto a confirmación por parte de nuestro equipo antes del traslado.</span>
+      </div>
 
-      <!-- Campos km manuales (solo en modo sin API) -->
-      <div class="manual-km-fields" id="manualKmFields">
+      <!-- 3. Médico y costos adicionales -->
+      <div class="form-row-2">
         <div class="form-group">
-          <label>📏 Km salida → recogida</label>
-          <input type="number" id="kmSalidaRecogida" min="0" step="0.5" placeholder="0 si no aplica" />
+          <label>👨‍⚕️ Médico acompañante</label>
+          <select id="doctorFee"></select>
         </div>
         <div class="form-group">
-          <label>📏 Km recogida → destino</label>
-          <input type="number" id="kmRecogidaDestino" min="0" step="0.5" placeholder="0" />
+          <label>🛣️ Casetas / Peajes (MXN)</label>
+          <input type="number" id="casetas" min="0" step="50" placeholder="0" />
+        </div>
+      </div>
+      <div class="form-row-2" style="margin-bottom:1.5rem">
+        <div class="form-group">
+          <label>⏱️ Horas de espera <em style="font-weight:400;font-size:.78rem;color:var(--gray-400)">(1ª hora sin costo)</em></label>
+          <input type="number" id="horasEspera" min="0" step="0.5" placeholder="0" />
+        </div>
+        <div class="form-group">
+          <label>🔄 Viaje redondo</label>
+          <label class="round-trip-toggle" style="margin-bottom:0;padding:.65rem 1rem">
+            <input type="checkbox" id="roundTrip" />
+            <span style="font-size:.88rem">Incluir regreso (km ×2)</span>
+          </label>
         </div>
       </div>
 
-      <!-- Botón calcular -->
+      <!-- Campos km manuales -->
+      <div class="manual-km-fields" id="manualKmFields">
+        <div class="form-group">
+          <label>📏 Km vacío (Base → Recogida)</label>
+          <input type="number" id="kmVacio" min="0" step="0.5" placeholder="0 si no aplica" />
+        </div>
+        <div class="form-group">
+          <label>📏 Km traslado (Recogida → Destino)</label>
+          <input type="number" id="kmTraslado" min="0" step="0.5" placeholder="0" />
+        </div>
+      </div>
+
+      <!-- Calcular -->
       <button class="btn btn-navy calculate-btn" id="btnCalcular" onclick="calcularCotizacion()">
         🧮 Calcular cotización
       </button>
@@ -582,7 +558,7 @@
         Calculando ruta con Google Maps…
       </div>
 
-      <!-- ---- RESULTADO ---- -->
+      <!-- ===== RESULTADO ===== -->
       <div id="cotizacion-resultado">
         <div class="resultado-header">
           <div class="resultado-icon">📋</div>
@@ -597,18 +573,15 @@
         <div class="total-box">
           <div>
             <div class="t-label">Total estimado</div>
-            <div class="round-note" id="roundNote">Incluye viaje de regreso (×2)</div>
+            <div class="round-note" id="roundNote">Incluye regreso (km ×2)</div>
           </div>
           <div class="amount" id="totalAmount">$0</div>
         </div>
 
         <div class="disclaimer">
-          ⚠️
-          <span>
-            Este es un <strong>presupuesto aproximado</strong>, no un cobro definitivo.
-            El costo final puede variar según las condiciones del traslado.
-            Confirme siempre con nuestro equipo antes de comprometerse.
-          </span>
+          ⚠️ <span>Este es un <strong>presupuesto aproximado</strong>, no un cobro definitivo.
+          El costo final puede variar según las condiciones reales del traslado.
+          Confirme siempre con nuestro equipo.</span>
         </div>
 
         <div class="resultado-actions">
@@ -622,9 +595,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     CONTACTO
-     ============================================================ -->
+<!-- ============================================================ CONTACTO -->
 <section id="contacto">
   <div class="container">
     <h2 class="section-title">Contáctanos</h2>
@@ -633,9 +604,7 @@
   </div>
 </section>
 
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
+<!-- ============================================================ FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -646,30 +615,23 @@
         <rect x="15" y="5"  width="10" height="30" rx="2" fill="#DC2626"/>
         <rect x="5"  y="15" width="30" height="10" rx="2" fill="#DC2626"/>
       </svg>
-      <div class="brand-text">
-        Ambulancia Hope Life
-        <span>Servicio 24/7 · 365 días al año</span>
-      </div>
+      <div class="brand-text">Ambulancia Hope Life<span>Servicio 24/7 · 365 días al año</span></div>
     </div>
     <div class="footer-info" id="footerInfo"></div>
   </div>
 </footer>
 
-<!-- WhatsApp flotante -->
 <a class="floating-wa" id="floatingWa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
 
-<!-- ============================================================
-     JAVASCRIPT
-     ============================================================ -->
+<!-- ============================================================ JAVASCRIPT -->
 <script>
 /* ================================================================
    CONFIGURACIÓN EDITABLE
-   Modifica estos valores para personalizar el sitio sin tocar
-   el resto del código.
+   Todos los valores del negocio se centralizan aquí.
    ================================================================ */
 const CONFIG = {
 
@@ -680,100 +642,108 @@ const CONFIG = {
 
   /* Contacto */
   phones:   ["+52 745 688 5035", "+52 745 688 6513"],
-  whatsapp: "527456885035", // Sin +, sin espacios, con código de país
+  whatsapp: "527456885035",
 
-  /* ---- Google Maps API Key ----
-     Obtén tu clave en https://console.cloud.google.com
-     Activa: Maps JavaScript API, Places API, Directions API.
-     Si está vacía (""), el cotizador funciona en modo manual
-     (el usuario escribe los km a mano). */
+  /* Google Maps API Key — vacía = modo manual */
   GOOGLE_MAPS_API_KEY: "AIzaSyARg6Xa10f4idyogimiY0BGDpZaAyO8cnU",
 
   /* Punto de salida por defecto */
   defaultOrigin: "Cruz Grande, Florencio Villarreal, Guerrero, México",
 
-  /* Tarifa por defecto (editable también desde la UI) */
-  costPerKm:  40, // MXN por kilómetro
-  baseCharge: 0,  // Cargo base opcional en MXN
+  /* ---- TARIFAS ---- */
 
-  /* Hospitales frecuentes — botones de acceso rápido en el cotizador */
+  /* Tarifa para km en vacío (ambulancia va a recoger al paciente sin él a bordo).
+     Siempre se cobra a la tarifa básica, sin importar el tipo de traslado. */
+  emptyKmRate: 60, // MXN/km
+
+  /* Tipos de traslado con su tarifa por km */
+  transferTypes: [
+    {
+      id:        'simple',
+      icon:      '🚗',
+      name:      'Traslado Simple',
+      desc:      'Paciente estable, sin oxígeno',
+      ratePerKm: 60   // MXN/km
+    },
+    {
+      id:        'svb',
+      icon:      '🫁',
+      name:      'Soporte Vital Básico',
+      desc:      'Con oxígeno y monitor de signos',
+      ratePerKm: 75   // MXN/km
+    },
+    {
+      id:        'uti',
+      icon:      '🏥',
+      name:      'Terapia Intensiva',
+      desc:      'Equipo especializado + médico',
+      ratePerKm: 75   // MXN/km
+    }
+  ],
+
+  /* Honorarios médicos (tarifa plana que se suma al total del viaje) */
+  doctorFees: [
+    { name: 'Sin médico',                  fee: 0    },
+    { name: 'Médico General',              fee: 5000 },
+    { name: 'Médico Especialista / Urgenciólogo', fee: 8000 }
+  ],
+
+  /* Tiempo de espera: tarifa por hora DESPUÉS de la primera hora gratuita */
+  waitFreeHours:    1,   // horas sin costo
+  waitRatePerHour:  300, // MXN por hora adicional
+
+  /* Palabras clave para detectar destinos fuera de Guerrero y mostrar aviso */
+  outStateKeywords: [
+    'ciudad de méxico', 'cdmx', 'toluca', 'estado de méxico', 'puebla',
+    'oaxaca', 'morelos', 'guerrero no aplica', 'df '
+  ],
+
+  /* Hospitales frecuentes */
   frequentHospitals: [
-    {
-      name:    "Hospital del Quemado",
-      address: "Hospital General de Especialidades, Acapulco, Guerrero, México"
-    },
-    {
-      name:    "IMSS Vicente Guerrero",
-      address: "Hospital General de Zona No. 1 IMSS Vicente Guerrero, Acapulco, Guerrero, México"
-    },
-    {
-      name:    "Torre Médica Pacífico",
-      address: "Torre Médica del Pacífico, Acapulco, Guerrero, México"
-    },
-    {
-      name:    "Madre y Niño Guerrerense",
-      address: "Hospital de la Madre y el Niño Guerrerense, Chilpancingo, Guerrero, México"
-    },
-    {
-      name:    "INCan CDMX",
-      address: "Instituto Nacional de Cancerología, Tlalpan, Ciudad de México, México"
-    }
+    { name: 'Hospital del Quemado',      address: 'Hospital General de Especialidades, Acapulco, Guerrero, México' },
+    { name: 'IMSS Vicente Guerrero',     address: 'Hospital General de Zona No. 1 IMSS Vicente Guerrero, Acapulco, Guerrero, México' },
+    { name: 'Torre Médica Pacífico',     address: 'Torre Médica del Pacífico, Acapulco, Guerrero, México' },
+    { name: 'Madre y Niño Guerrerense',  address: 'Hospital de la Madre y el Niño Guerrerense, Chilpancingo, Guerrero, México' },
+    { name: 'INCan CDMX',               address: 'Instituto Nacional de Cancerología, Tlalpan, Ciudad de México, México' }
   ],
 
-  /* Rutas frecuentes para la sección de cobertura */
+  /* Rutas frecuentes */
   coverageRoutes: [
-    { origin: "Cruz Grande", dest: "Acapulco",          km: "~130 km", desc: "IMSS, ISSSTE y hospitales privados" },
-    { origin: "Cruz Grande", dest: "Chilpancingo",       km: "~200 km", desc: "Hospital Madre y Niño, ISSSTE" },
-    { origin: "Cruz Grande", dest: "Ciudad de México",   km: "~450 km", desc: "INCan, IMSS, ISSSTE federales" },
-    { origin: "Cruz Grande", dest: "Ometepec",           km: "~70 km",  desc: "Traslados locales a la región" },
-    { origin: "Cruz Grande", dest: "Tlapa de Comonfort", km: "~160 km", desc: "Centro de salud, zona Montaña" },
-    { origin: "Cruz Grande", dest: "Zihuatanejo",        km: "~180 km", desc: "IMSS y privados Costa Grande" }
+    { origin: 'Cruz Grande', dest: 'Acapulco',          km: '~130 km', desc: 'IMSS, ISSSTE y hospitales privados' },
+    { origin: 'Cruz Grande', dest: 'Chilpancingo',       km: '~200 km', desc: 'Hospital Madre y Niño, ISSSTE' },
+    { origin: 'Cruz Grande', dest: 'Ciudad de México',   km: '~450 km', desc: 'INCan, IMSS, ISSSTE federales' },
+    { origin: 'Cruz Grande', dest: 'Ometepec',           km: '~70 km',  desc: 'Traslados locales a la región' },
+    { origin: 'Cruz Grande', dest: 'Tlapa de Comonfort', km: '~160 km', desc: 'Centro de salud, zona Montaña' },
+    { origin: 'Cruz Grande', dest: 'Zihuatanejo',        km: '~180 km', desc: 'IMSS y privados Costa Grande' }
   ],
 
-  /* Servicios ofrecidos */
+  /* Servicios */
   services: [
-    {
-      icon:  "🚑",
-      title: "Traslado Foráneo",
-      desc:  "Traslados seguros a cualquier ciudad del estado o del país, con equipamiento médico completo y personal capacitado en todo momento."
-    },
-    {
-      icon:  "🏘️",
-      title: "Traslado Local",
-      desc:  "Servicio dentro de Cruz Grande y municipios cercanos. Respuesta rápida para emergencias y traslados inmediatos."
-    },
-    {
-      icon:  "📅",
-      title: "Traslado Programado",
-      desc:  "Agenda tu traslado con anticipación para citas médicas, quimioterapias, diálisis y procedimientos hospitalarios."
-    },
-    {
-      icon:  "🛣️",
-      title: "Atención en Ruta",
-      desc:  "Soporte médico y estabilización del paciente durante el trayecto, con equipo de soporte vital básico y avanzado."
-    },
-    {
-      icon:  "🎪",
-      title: "Cobertura de Eventos",
-      desc:  "Ambulancia de guardia en eventos masivos: deportivos, culturales, fiestas patronales y espectáculos."
-    }
+    { icon: '🚑', title: 'Traslado Foráneo',    desc: 'Traslados seguros a cualquier ciudad del estado o del país, con equipamiento médico completo y personal capacitado.' },
+    { icon: '🏘️', title: 'Traslado Local',      desc: 'Servicio dentro de Cruz Grande y municipios cercanos. Respuesta rápida para emergencias y traslados inmediatos.' },
+    { icon: '📅', title: 'Traslado Programado', desc: 'Agenda con anticipación para citas médicas, quimioterapias, diálisis y procedimientos hospitalarios.' },
+    { icon: '🛣️', title: 'Atención en Ruta',   desc: 'Soporte médico y estabilización del paciente durante el trayecto con equipo de soporte vital básico y avanzado.' },
+    { icon: '🎪', title: 'Cobertura de Eventos', desc: 'Ambulancia de guardia en eventos masivos: deportivos, culturales, fiestas patronales y espectáculos.' }
   ]
 };
 /* ================================================================ */
 
-/* ---------- Estado del cotizador ---------- */
-let mapsApiLoaded   = false;
-let cotizacionData  = null; // último resultado para exportar
+/* ---------- Estado ---------- */
+let mapsApiLoaded  = false;
+let cotizacionData = null;
 
-/* ---------- Al cargar la página ---------- */
+/* ---------- Inicio ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   renderServices();
   renderRoutes();
+  renderTransferTypes();
+  renderDoctorFees();
   renderHospitalButtons();
   renderContactSection();
   renderFooter();
   initQuoterDefaults();
   initHamburger();
+  initOutStateDetection();
   document.getElementById('floatingWa').href = `https://wa.me/${CONFIG.whatsapp}`;
 
   if (CONFIG.GOOGLE_MAPS_API_KEY) {
@@ -784,7 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
-   RENDERIZADO DE SECCIONES (generado desde CONFIG)
+   RENDERIZADO
    ============================================================ */
 
 function renderServices() {
@@ -794,22 +764,38 @@ function renderServices() {
         <div class="service-icon">${s.icon}</div>
         <h3>${s.title}</h3>
         <p>${s.desc}</p>
-      </div>
-    `).join('');
+      </div>`).join('');
 }
 
 function renderRoutes() {
   document.getElementById('routesGrid').innerHTML =
     CONFIG.coverageRoutes.map(r => `
       <div class="route-card">
-        <div class="route-header">
-          <div class="route-dot"></div>
-          <div class="route-name">${r.origin} → ${r.dest}</div>
-        </div>
+        <div class="route-header"><div class="route-dot"></div><div class="route-name">${r.origin} → ${r.dest}</div></div>
         <div class="route-details">${r.desc}</div>
         <span class="route-distance">${r.km}</span>
-      </div>
-    `).join('');
+      </div>`).join('');
+}
+
+function renderTransferTypes() {
+  document.getElementById('transferTypes').innerHTML =
+    CONFIG.transferTypes.map((t, i) => `
+      <label class="type-card">
+        <input type="radio" name="transferType" value="${t.id}" ${i === 0 ? 'checked' : ''}>
+        <div class="type-card-inner">
+          <span class="type-icon">${t.icon}</span>
+          <span class="type-name">${t.name}</span>
+          <span class="type-rate">$${t.ratePerKm}/km</span>
+          <span class="type-desc">${t.desc}</span>
+        </div>
+      </label>`).join('');
+}
+
+function renderDoctorFees() {
+  document.getElementById('doctorFee').innerHTML =
+    CONFIG.doctorFees.map(d =>
+      `<option value="${d.fee}">${d.name}${d.fee > 0 ? ' — ' + fmt(d.fee) : ''}</option>`
+    ).join('');
 }
 
 function renderHospitalButtons() {
@@ -821,8 +807,7 @@ function renderHospitalButtons() {
 
 function renderContactSection() {
   const phoneLinks = CONFIG.phones
-    .map(p => `<a class="phone-link" href="tel:${p.replace(/\s/g,'')}">${p}</a>`)
-    .join('');
+    .map(p => `<a class="phone-link" href="tel:${p.replace(/\s/g,'')}">${p}</a>`).join('');
 
   document.getElementById('contactGrid').innerHTML = `
     <div class="contact-card">
@@ -834,7 +819,7 @@ function renderContactSection() {
     <div class="contact-card">
       <div class="contact-icon">💬</div>
       <h3>WhatsApp</h3>
-      <p>Cotizaciones, confirmaciones y atención por mensaje de texto</p><br>
+      <p>Cotizaciones, confirmaciones y atención por mensaje</p><br>
       <a class="whatsapp-btn" href="https://wa.me/${CONFIG.whatsapp}" target="_blank" rel="noopener">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -847,8 +832,7 @@ function renderContactSection() {
       <h3>Ubicación</h3>
       <p>${CONFIG.location}</p><br>
       <span style="font-size:.83rem;color:var(--gray-400)">Base central de operaciones</span>
-    </div>
-  `;
+    </div>`;
 }
 
 function renderFooter() {
@@ -857,60 +841,60 @@ function renderFooter() {
     ${CONFIG.phones.join(' &nbsp;·&nbsp; ')}<br>
     <span style="color:rgba(255,255,255,.35);font-size:.75rem;">
       © ${new Date().getFullYear()} ${CONFIG.businessName} · Todos los derechos reservados
-    </span>
-  `;
+    </span>`;
 }
 
 /* ============================================================
-   COTIZADOR — INICIALIZACIÓN
+   INICIALIZACIÓN DEL COTIZADOR
    ============================================================ */
 
 function initQuoterDefaults() {
-  document.getElementById('costPerKm').value  = CONFIG.costPerKm;
-  document.getElementById('baseCharge').value = CONFIG.baseCharge || '';
   document.getElementById('inputSalida').value = CONFIG.defaultOrigin;
+  document.getElementById('casetas').value     = '';
+  document.getElementById('horasEspera').value = '';
+}
+
+function initOutStateDetection() {
+  document.getElementById('inputDestino').addEventListener('input', checkOutState);
+}
+
+function checkOutState() {
+  const val     = document.getElementById('inputDestino').value.toLowerCase();
+  const isOut   = CONFIG.outStateKeywords.some(kw => val.includes(kw));
+  const notice  = document.getElementById('outStateNotice');
+  notice.classList.toggle('hidden', !isOut);
 }
 
 /* ============================================================
-   GOOGLE MAPS — CARGA E INTEGRACIÓN
+   GOOGLE MAPS
    ============================================================ */
 
 function loadGoogleMapsApi() {
-  const script = document.createElement('script');
-  script.src =
+  const s = document.createElement('script');
+  s.src =
     `https://maps.googleapis.com/maps/api/js` +
-    `?key=${CONFIG.GOOGLE_MAPS_API_KEY}` +
-    `&libraries=places` +
-    `&callback=onMapsLoaded` +
-    `&language=es&region=MX`;
-  script.async = true;
-  script.defer = true;
-  script.onerror = () => {
-    console.warn('No se pudo cargar Google Maps API. Activando modo manual.');
-    enableManualMode();
-  };
-  document.head.appendChild(script);
+    `?key=${CONFIG.GOOGLE_MAPS_API_KEY}&libraries=places&callback=onMapsLoaded&language=es&region=MX`;
+  s.async = true;
+  s.defer = true;
+  s.onerror = () => { console.warn('Maps no cargó. Modo manual.'); enableManualMode(); };
+  document.head.appendChild(s);
 }
 
-/* Callback automático al terminar de cargar Maps */
 window.onMapsLoaded = function () {
   mapsApiLoaded = true;
-  initAutocomplete('inputSalida',   'mx');
-  initAutocomplete('inputRecogida', 'mx');
-  initAutocomplete('inputDestino',  'mx');
+  ['inputSalida','inputRecogida','inputDestino'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const ac = new google.maps.places.Autocomplete(el, {
+      componentRestrictions: { country: 'mx' },
+      fields: ['formatted_address','geometry','name']
+    });
+    if (id === 'inputDestino') ac.addListener('place_changed', checkOutState);
+  });
 };
 
-function initAutocomplete(inputId) {
-  const el = document.getElementById(inputId);
-  if (!el || typeof google === 'undefined') return;
-  new google.maps.places.Autocomplete(el, {
-    componentRestrictions: { country: 'mx' },
-    fields: ['formatted_address', 'geometry', 'name']
-  });
-}
-
 function enableManualMode() {
-  document.getElementById('manualModeNotice').classList.add('visible');
+  document.getElementById('manualModeNotice').classList.remove('hidden');
   document.getElementById('manualKmFields').classList.add('visible');
 }
 
@@ -919,12 +903,9 @@ function enableManualMode() {
    ============================================================ */
 
 function selectHospital(idx) {
-  const h = CONFIG.frequentHospitals[idx];
-  document.getElementById('inputDestino').value = h.address;
-
-  document.querySelectorAll('.hospital-btn').forEach((b, i) => {
-    b.classList.toggle('active', i === idx);
-  });
+  document.getElementById('inputDestino').value = CONFIG.frequentHospitals[idx].address;
+  document.querySelectorAll('.hospital-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  checkOutState();
 }
 
 /* ============================================================
@@ -941,67 +922,59 @@ async function calcularCotizacion() {
     return;
   }
 
-  const salida      = document.getElementById('inputSalida').value.trim() || CONFIG.defaultOrigin;
-  const recogida    = document.getElementById('inputRecogida').value.trim();
-  const costPerKm   = parseFloat(document.getElementById('costPerKm').value)  || CONFIG.costPerKm;
-  const baseCharge  = parseFloat(document.getElementById('baseCharge').value) || 0;
-  const roundTrip   = document.getElementById('roundTrip').checked;
+  const salida     = document.getElementById('inputSalida').value.trim() || CONFIG.defaultOrigin;
+  const recogida   = document.getElementById('inputRecogida').value.trim();
+  const roundTrip  = document.getElementById('roundTrip').checked;
+  const doctorFee  = parseFloat(document.getElementById('doctorFee').value)   || 0;
+  const casetas    = parseFloat(document.getElementById('casetas').value)      || 0;
+  const horasEspera = parseFloat(document.getElementById('horasEspera').value) || 0;
 
-  const resultado = document.getElementById('cotizacion-resultado');
-  const loading   = document.getElementById('loadingIndicator');
+  const typeId     = document.querySelector('input[name="transferType"]:checked').value;
+  const typeObj    = CONFIG.transferTypes.find(t => t.id === typeId);
 
-  resultado.classList.remove('visible');
-  loading.classList.add('visible');
+  document.getElementById('cotizacion-resultado').classList.remove('visible');
+  document.getElementById('loadingIndicator').classList.add('visible');
 
   try {
     let tramos;
-
     if (mapsApiLoaded) {
       tramos = await calcularConMaps(salida, recogida, destino);
     } else {
       tramos = calcularManual(salida, recogida, destino);
     }
 
-    mostrarResultado({ tramos, baseCharge, costPerKm, roundTrip, salida, recogida, destino });
+    mostrarResultado({ tramos, typeObj, doctorFee, casetas, horasEspera, roundTrip, salida, recogida, destino });
 
   } catch (err) {
-    console.error('Error al calcular ruta:', err);
-    alert('No se pudo calcular la ruta. Verifica las direcciones o usa el modo manual.');
+    console.error('Error al calcular:', err);
+    alert('No se pudo calcular la ruta. Verifica las direcciones o activa el modo manual.');
   } finally {
-    loading.classList.remove('visible');
+    document.getElementById('loadingIndicator').classList.remove('visible');
   }
 }
 
-/* --- Google Maps Directions API --- */
+/* --- Con Google Maps Directions API ---
+   Tramo 1 (vacío): salida → recogida  → cobra a emptyKmRate
+   Tramo 2 (traslado): recogida → destino → cobra a typeObj.ratePerKm
+   Si no hay recogida, solo un tramo al ratePerKm del tipo. */
 function calcularConMaps(salida, recogida, destino) {
   return new Promise((resolve, reject) => {
     const svc    = new google.maps.DirectionsService();
-    const waypts = recogida
-      ? [{ location: recogida, stopover: true }]
-      : [];
+    const waypts = recogida ? [{ location: recogida, stopover: true }] : [];
 
     svc.route(
-      {
-        origin:      salida,
-        destination: destino,
-        waypoints:   waypts,
-        travelMode:  google.maps.TravelMode.DRIVING,
-        region:      'MX'
-      },
+      { origin: salida, destination: destino, waypoints: waypts, travelMode: google.maps.TravelMode.DRIVING, region: 'MX' },
       (result, status) => {
-        if (status !== 'OK') {
-          reject(new Error('Directions: ' + status));
-          return;
-        }
+        if (status !== 'OK') { reject(new Error('Directions: ' + status)); return; }
 
-        const legs   = result.routes[0].legs;
+        const legs = result.routes[0].legs;
         const tramos = [];
 
         if (recogida && legs.length >= 2) {
-          tramos.push({ label: 'Base → Recogida',   from: salida,   to: recogida, km: legs[0].distance.value / 1000 });
-          tramos.push({ label: 'Recogida → Destino', from: recogida, to: destino,  km: legs[1].distance.value / 1000 });
+          tramos.push({ label: 'Km en vacío',  subLabel: 'Base → Recogida',   from: salida,   to: recogida, km: legs[0].distance.value / 1000, type: 'vacio'    });
+          tramos.push({ label: 'Km traslado',  subLabel: 'Recogida → Destino', from: recogida, to: destino,  km: legs[1].distance.value / 1000, type: 'traslado' });
         } else {
-          tramos.push({ label: 'Salida → Destino',  from: salida,   to: destino,  km: legs[0].distance.value / 1000 });
+          tramos.push({ label: 'Km traslado',  subLabel: 'Salida → Destino',   from: salida,   to: destino,  km: legs[0].distance.value / 1000, type: 'traslado' });
         }
 
         resolve(tramos);
@@ -1010,120 +983,140 @@ function calcularConMaps(salida, recogida, destino) {
   });
 }
 
-/* --- Modo manual (sin API) --- */
+/* --- Modo manual --- */
 function calcularManual(salida, recogida, destino) {
-  const km1 = parseFloat(document.getElementById('kmSalidaRecogida').value) || 0;
-  const km2 = parseFloat(document.getElementById('kmRecogidaDestino').value) || 0;
+  const kmV = parseFloat(document.getElementById('kmVacio').value)    || 0;
+  const kmT = parseFloat(document.getElementById('kmTraslado').value) || 0;
+  const tramos = [];
 
-  if (recogida && km1 > 0) {
-    return [
-      { label: 'Base → Recogida',    from: salida,   to: recogida, km: km1 },
-      { label: 'Recogida → Destino', from: recogida, to: destino,  km: km2 }
-    ];
+  if (recogida && kmV > 0) {
+    tramos.push({ label: 'Km en vacío', subLabel: 'Base → Recogida',    from: salida,   to: recogida, km: kmV, type: 'vacio'    });
+    tramos.push({ label: 'Km traslado', subLabel: 'Recogida → Destino', from: recogida, to: destino,  km: kmT, type: 'traslado' });
+  } else {
+    tramos.push({ label: 'Km traslado', subLabel: 'Salida → Destino',   from: salida,   to: destino,  km: kmV + kmT, type: 'traslado' });
   }
 
-  return [
-    { label: 'Salida → Destino', from: salida, to: destino, km: km1 + km2 }
-  ];
+  return tramos;
 }
 
 /* ============================================================
    COTIZADOR — MOSTRAR RESULTADO
+   Fórmula:
+     km_vacío   × emptyKmRate       (×2 si redondo)
+   + km_traslado × typeObj.ratePerKm (×2 si redondo)
+   + doctorFee                       (plano, no se duplica)
+   + casetas                         (plano, no se duplica)
+   + max(0, horasEspera - waitFreeHours) × waitRatePerHour
    ============================================================ */
 
-function mostrarResultado({ tramos, baseCharge, costPerKm, roundTrip, salida, recogida, destino }) {
-  const mult     = roundTrip ? 2 : 1;
-  let   subtotal = 0;
-
+function mostrarResultado({ tramos, typeObj, doctorFee, casetas, horasEspera, roundTrip, salida, recogida, destino }) {
+  const mult  = roundTrip ? 2 : 1;
+  let total   = 0;
   const lista = document.getElementById('tramosLista');
   lista.innerHTML = '';
 
+  /* Tramos de km */
   tramos.forEach(t => {
+    const rate  = t.type === 'vacio' ? CONFIG.emptyKmRate : typeObj.ratePerKm;
     const km    = t.km * mult;
-    const costo = km * costPerKm;
-    subtotal   += costo;
+    const costo = km * rate;
+    total      += costo;
 
-    const li = document.createElement('li');
-    li.className = 'tramo-item';
-    li.innerHTML = `
-      <div class="tramo-dot"></div>
-      <div class="tramo-info">
-        <div class="tramo-label">${t.label}</div>
-        <div class="tramo-route">${shortenAddr(t.from)} → ${shortenAddr(t.to)}</div>
-      </div>
-      <div class="tramo-cost">
-        <div class="tramo-km">${km.toFixed(1)} km</div>
-        <div class="tramo-price">${fmt(costo)}</div>
-      </div>
-    `;
-    lista.appendChild(li);
+    const dotColor = t.type === 'vacio' ? 'var(--amber)' : 'var(--navy-light)';
+    lista.appendChild(makeTramoEl(t.label, t.subLabel, `${km.toFixed(1)} km × $${rate}/km`, costo, dotColor));
   });
 
-  if (baseCharge > 0) {
-    const li = document.createElement('li');
-    li.className = 'tramo-item';
-    li.innerHTML = `
-      <div class="tramo-dot" style="background:var(--green-light)"></div>
-      <div class="tramo-info">
-        <div class="tramo-label">Cargo base</div>
-        <div class="tramo-route">Tarifa fija de servicio</div>
-      </div>
-      <div class="tramo-cost">
-        <div class="tramo-km">fijo</div>
-        <div class="tramo-price">${fmt(baseCharge)}</div>
-      </div>
-    `;
-    lista.appendChild(li);
+  /* Médico */
+  if (doctorFee > 0) {
+    const doc = CONFIG.doctorFees.find(d => d.fee === doctorFee) || {};
+    total += doctorFee;
+    lista.appendChild(makeTramoEl('Honorario médico', doc.name || 'Médico acompañante', 'tarifa plana', doctorFee, 'var(--green-light)'));
   }
 
-  const total = subtotal + baseCharge;
+  /* Casetas */
+  if (casetas > 0) {
+    total += casetas;
+    lista.appendChild(makeTramoEl('Casetas / Peajes', 'Costo de autopistas en ruta', 'costo estimado', casetas, 'var(--gray-400)'));
+  }
 
+  /* Espera */
+  const horasExtra = Math.max(0, horasEspera - CONFIG.waitFreeHours);
+  if (horasExtra > 0) {
+    const costoEspera = horasExtra * CONFIG.waitRatePerHour;
+    total += costoEspera;
+    lista.appendChild(makeTramoEl(
+      'Tiempo de espera',
+      `${horasExtra.toFixed(1)} hrs adicionales (1ª hora gratis)`,
+      `$${CONFIG.waitRatePerHour}/hr`,
+      costoEspera,
+      'var(--red)'
+    ));
+  }
+
+  /* Totales */
   document.getElementById('totalAmount').textContent = fmt(total);
-  const roundEl = document.getElementById('roundNote');
-  roundEl.style.display = roundTrip ? 'block' : 'none';
+  document.getElementById('roundNote').style.display = roundTrip ? 'block' : 'none';
 
   const now = new Date();
   document.getElementById('fechaCotizacion').textContent =
-    'Generado el ' + now.toLocaleString('es-MX', {
-      weekday: 'long', year: 'numeric', month: 'long',
-      day: 'numeric', hour: '2-digit', minute: '2-digit'
-    });
+    'Generado el ' + now.toLocaleString('es-MX', { weekday:'long', year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit' });
 
-  cotizacionData = { tramos, baseCharge, costPerKm, roundTrip, salida, recogida, destino, total, fecha: now.toLocaleString('es-MX') };
+  cotizacionData = { tramos, typeObj, doctorFee, casetas, horasEspera, horasExtra, roundTrip, salida, recogida, destino, total, fecha: now.toLocaleString('es-MX') };
 
   const msg = buildMsg(cotizacionData);
-  document.getElementById('whatsappLink').href =
-    `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+  document.getElementById('whatsappLink').href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
 
   const res = document.getElementById('cotizacion-resultado');
   res.classList.add('visible');
   res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
+function makeTramoEl(label, sub, kmInfo, costo, dotColor) {
+  const li = document.createElement('li');
+  li.className = 'tramo-item';
+  li.innerHTML = `
+    <div class="tramo-dot" style="background:${dotColor}"></div>
+    <div class="tramo-info">
+      <div class="tramo-label">${label}</div>
+      <div class="tramo-route">${sub}</div>
+    </div>
+    <div class="tramo-cost">
+      <div class="tramo-km">${kmInfo}</div>
+      <div class="tramo-price">${fmt(costo)}</div>
+    </div>`;
+  return li;
+}
+
 /* ============================================================
-   EXPORTAR COTIZACIÓN
+   EXPORTAR
    ============================================================ */
 
 function buildMsg(d) {
   const mult = d.roundTrip ? 2 : 1;
-  let   msg  = `🚑 *Cotización — ${CONFIG.businessName}*\n`;
-  msg += `📅 ${d.fecha}\n\n`;
+  let msg = `🚑 *Cotización — ${CONFIG.businessName}*\n📅 ${d.fecha}\n\n`;
   msg += `📍 Salida: ${d.salida}\n`;
   if (d.recogida) msg += `🏠 Recogida: ${d.recogida}\n`;
   msg += `🏥 Destino: ${d.destino}\n`;
-  if (d.roundTrip) msg += `🔄 Viaje redondo\n`;
-  msg += `\n📏 *Desglose de tramos:*\n`;
+  msg += `🚑 Tipo: ${d.typeObj.name} ($${d.typeObj.ratePerKm}/km)\n`;
+  if (d.roundTrip) msg += `🔄 Viaje redondo (km ×2)\n`;
+  msg += `\n📏 *Desglose:*\n`;
 
   d.tramos.forEach(t => {
-    const km = (t.km * mult).toFixed(1);
-    msg += `• ${t.label}: ${km} km — ${fmt(t.km * mult * d.costPerKm)}\n`;
+    const rate  = t.type === 'vacio' ? CONFIG.emptyKmRate : d.typeObj.ratePerKm;
+    const km    = (t.km * mult).toFixed(1);
+    const costo = t.km * mult * rate;
+    msg += `• ${t.label} (${t.subLabel}): ${km} km — ${fmt(costo)}\n`;
   });
 
-  if (d.baseCharge > 0) msg += `• Cargo base: ${fmt(d.baseCharge)}\n`;
+  if (d.doctorFee > 0) {
+    const doc = CONFIG.doctorFees.find(x => x.fee === d.doctorFee);
+    msg += `• ${doc ? doc.name : 'Médico'}: ${fmt(d.doctorFee)}\n`;
+  }
+  if (d.casetas   > 0) msg += `• Casetas: ${fmt(d.casetas)}\n`;
+  if (d.horasExtra > 0) msg += `• Espera (${d.horasExtra.toFixed(1)} hrs): ${fmt(d.horasExtra * CONFIG.waitRatePerHour)}\n`;
 
-  msg += `\n💰 *TOTAL ESTIMADO: ${fmt(d.total)}*\n`;
-  msg += `(tarifa: $${d.costPerKm} MXN/km)\n\n`;
-  msg += `⚠️ _Presupuesto aproximado. El costo final puede variar según las condiciones del traslado._\n\n`;
+  msg += `\n💰 *TOTAL ESTIMADO: ${fmt(d.total)}*\n\n`;
+  msg += `⚠️ _Presupuesto aproximado. El costo final puede variar según condiciones del traslado._\n\n`;
   msg += `📞 ${CONFIG.phones.join(' | ')}`;
 
   return msg;
@@ -1132,31 +1125,19 @@ function buildMsg(d) {
 function copiarCotizacion() {
   if (!cotizacionData) return;
   const msg = buildMsg(cotizacionData);
+  const btn = document.querySelector('[onclick="copiarCotizacion()"]');
+  const orig = btn.innerHTML;
 
   const fallback = () => {
     const ta = document.createElement('textarea');
     ta.value = msg;
     ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
   };
 
-  const btn      = document.querySelector('[onclick="copiarCotizacion()"]');
-  const original = btn.innerHTML;
-
-  (navigator.clipboard
-    ? navigator.clipboard.writeText(msg)
-    : Promise.resolve(fallback())
-  ).then(() => {
-    btn.innerHTML = '✅ ¡Copiado!';
-    setTimeout(() => { btn.innerHTML = original; }, 2500);
-  }).catch(() => {
-    fallback();
-    btn.innerHTML = '✅ ¡Copiado!';
-    setTimeout(() => { btn.innerHTML = original; }, 2500);
-  });
+  (navigator.clipboard ? navigator.clipboard.writeText(msg) : Promise.resolve(fallback()))
+    .then(() => { btn.innerHTML = '✅ ¡Copiado!'; setTimeout(() => btn.innerHTML = orig, 2500); })
+    .catch(() => { fallback(); btn.innerHTML = '✅ ¡Copiado!'; setTimeout(() => btn.innerHTML = orig, 2500); });
 }
 
 /* ============================================================
@@ -1164,29 +1145,14 @@ function copiarCotizacion() {
    ============================================================ */
 
 function fmt(n) {
-  return new Intl.NumberFormat('es-MX', {
-    style: 'currency', currency: 'MXN', minimumFractionDigits: 0
-  }).format(n);
+  return new Intl.NumberFormat('es-MX', { style:'currency', currency:'MXN', minimumFractionDigits:0 }).format(n);
 }
-
-function shortenAddr(a) {
-  if (!a) return '';
-  const p = a.split(',');
-  return p.length > 2 ? p.slice(0, 2).join(',').trim() : a;
-}
-
-/* ============================================================
-   HAMBURGER MENU
-   ============================================================ */
 
 function initHamburger() {
   const btn   = document.getElementById('hamburgerBtn');
   const links = document.getElementById('navLinks');
-
   btn.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => links.classList.remove('open'))
-  );
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 }
 </script>
 
